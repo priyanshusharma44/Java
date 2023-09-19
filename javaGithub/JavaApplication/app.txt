@@ -1,0 +1,53 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class LabReportCalc extends JFrame {
+    private JTextField jTextField1;
+    private JTextField jTextField2;
+    private JTextField jTextField4;
+
+    public static void main(String[] args) {
+        new LabReportCalc();
+    }
+
+    LabReportCalc() {
+        JLabel label1 = new JLabel("Enter Number 1:");
+        add(label1, BorderLayout.PAGE_START);
+
+        jTextField1 = new JTextField();
+        add(jTextField1, BorderLayout.CENTER);
+
+        JLabel label2 = new JLabel("Enter Number 2:");
+        add(label2, BorderLayout.LINE_START);
+
+        jTextField2 = new JTextField();
+        add(jTextField2, BorderLayout.LINE_END);
+
+        JButton addButton = new JButton("ADD");
+        add(addButton, BorderLayout.PAGE_END);
+
+        jTextField4 = new JTextField("Result");
+        jTextField4.setEditable(false);
+        add(jTextField4, BorderLayout.AFTER_LAST_LINE);
+
+        addButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                resultActionPerformed(e);
+            }
+        });
+
+        pack();
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private void resultActionPerformed(ActionEvent evt) {
+        int a = Integer.parseInt(jTextField1.getText());
+        int b = Integer.parseInt(jTextField2.getText());
+        int res = a + b;
+        String r = Integer.toString(res);
+        jTextField4.setText(r);
+    }
+}
